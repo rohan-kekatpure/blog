@@ -1,7 +1,0 @@
-**/data
-*.pt
-*.npy
-.idea
-macos/simpleTimer/DerivedData
-**/__pycache__
-
