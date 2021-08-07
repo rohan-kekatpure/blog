@@ -171,8 +171,9 @@ def main():
     # Solve for alpha using linear regression normal equation
     alphas = _fit_sync_linear_regression(x, num_base_functions)
 
-    # Solve for alpha using
+    # Solve for alpha using analytical formula
     alphas = _fit_sinc_analytical(num_base_functions)
+    print(alphas)
 
     images_dir = Path('_images')
     if images_dir.exists():
