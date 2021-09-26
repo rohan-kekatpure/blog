@@ -1,8 +1,6 @@
 from PIL import Image
 import sys
 from pathlib import Path
-from copy import deepcopy
-
 
 img_dir = Path(sys.argv[1])
 img_paths = img_dir.glob('*.png')
