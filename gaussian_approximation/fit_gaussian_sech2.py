@@ -43,7 +43,7 @@ def _generate_figures(coef_list, images_dir):
             markerline.set_markerfacecolor('grey')
             ax0.set_ylim([-3, 3])
             val = 2./(np.sqrt(np.pi)) * (alphas[t, :] / q).sum()
-            txt = r'$$\sum_{m = 1}^{M}\frac{2\alpha_m}{m\sqrt{\pi}}= %0.4f$$' % val
+            txt = r'$$\sum_{m = 1}^{%d}\frac{2\alpha_m}{m\sqrt{\pi}}= %0.4f$$' % (M, val)
             ax0.text(0.4, 0.8, txt, transform=ax0.transAxes, fontsize=14)
             ax0.set_xlabel(r'$m$', fontsize=16)
             ax0.set_ylabel(r'$\alpha_m$', fontsize=16)
@@ -115,8 +115,8 @@ def main():
     x = np.linspace(0, 6, 128)
 
     # Solve for alphas using gradient descent
-    alphas = _fit_sech2_gradient_descent(x, num_base_functions, niters,
-                                         learning_rate, regularization_param)
+    # alphas = _fit_sech2_gradient_descent(x, num_base_functions, niters,
+    #                                      learning_rate, regularization_param)
 
     images_dir = Path('_images')
     if images_dir.exists():
@@ -126,7 +126,8 @@ def main():
     coefs_m8 = np.load('_coefs_m8.npy')
     coefs_m16 = np.load('_coefs_m16.npy')
     coefs_m32 = np.load('_coefs_m32.npy')
-    _generate_figures([coefs_m8, coefs_m16, coefs_m32], images_dir)
+    coefs_m64 = np.load('_coefs_m64.npy')
+    _generate_figures([coefs_m8, coefs_m16, coefs_m32, coefs_m64], images_dir)
 
 if __name__ == '__main__':
     main()
